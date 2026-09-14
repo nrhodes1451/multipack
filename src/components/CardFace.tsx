@@ -12,8 +12,7 @@ const RANK_SIZE = 44;
 const RANK_BASELINE = 36;
 const SUIT_SIZE = 44;
 const SUIT_BASELINE = 70;
-const FOOT_RULE_Y =
-  CARD_HEIGHT - INDEX_Y - SUIT_BASELINE + SUIT_SIZE * 0.4;
+const FOOT_RULE_Y = CARD_HEIGHT - INDEX_Y - SUIT_BASELINE + SUIT_SIZE * 0.4 + 200;
 
 function layerOpacity(focus: ReadAsFocus, layer: Exclude<ReadAsFocus, "all">) {
   return focus === "all" || focus === layer ? 1 : 0.12;
