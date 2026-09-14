@@ -11,7 +11,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "generate:mapping": "tsx --tsconfig tsconfig.app.json scripts/generate-mapping.ts",
-    "export": "tsx --tsconfig tsconfig.app.json scripts/export.ts"
+    "export": "tsx --tsconfig tsconfig.app.json scripts/export.ts",
+    "generate:readme-images": "tsx --tsconfig tsconfig.app.json scripts/readme-images.ts"
   },
   "dependencies": {
     "@fontsource/roboto": "^5.2.10",
