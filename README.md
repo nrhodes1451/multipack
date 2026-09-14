@@ -26,3 +26,7 @@
 - `npm run export` — SVG faces + back in `export/`
   - `--dpi 300` scales by 2.205 (750×1050)
   - `--bleed 3mm` adds bleed outside the card box
+- `npm run export:mpc` — MakePlayingCards pack in `export/mpc/`
+  - 104 faces + back as 822×1122 PNG (300 dpi, 36 px bleed)
+  - `multipack.pdf` is a 105-page proof; upload the PNGs
+  - Product: Custom Game Cards, Traditional Poker, up to 108 cards

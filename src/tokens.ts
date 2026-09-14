@@ -12,3 +12,5 @@ export const CARD_WIDTH = 340;
 export const CARD_HEIGHT = 476;
 export const PRINT_SCALE_300DPI = 2.205;
 export const MOCK_DPI = 136;
+export const MPC_DPI = 300;
+export const MPC_BLEED_PX = 36;
