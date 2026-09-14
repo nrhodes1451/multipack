@@ -12,7 +12,7 @@
 - **Corners** — rank and suit, mirrored
 - **Number** — 1–104, top right
 - **Left rail** — tarot name and index (empty on silent cards)
-- **Centre** — flower and rank
+- **Centre** — flower
 - **Foot** — gem mark and name, inverted
 
 **Back** — flowers and gems checkered, no text.

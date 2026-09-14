@@ -6,18 +6,17 @@ import { CARD_HEIGHT, CARD_WIDTH, COLORS } from "../tokens.ts";
 
 const DISPLAY = "'Roboto Condensed', sans-serif";
 const EASE = "opacity 120ms cubic-bezier(0.2,0,0,1)";
+const INDEX_X = 42;
 const INDEX_Y = 16;
-const SUIT_BASELINE = 54;
-const SUIT_SIZE = 26;
+const RANK_SIZE = 44;
+const RANK_BASELINE = 36;
+const SUIT_SIZE = 44;
+const SUIT_BASELINE = 70;
 const FOOT_RULE_Y =
   CARD_HEIGHT - INDEX_Y - SUIT_BASELINE + SUIT_SIZE * 0.4;
 
 function layerOpacity(focus: ReadAsFocus, layer: Exclude<ReadAsFocus, "all">) {
   return focus === "all" || focus === layer ? 1 : 0.12;
-}
-
-function rankWidth(rank: string) {
-  return rank === "10" ? 92 : 52;
 }
 
 function textWidth(
@@ -35,13 +34,13 @@ function textWidth(
 function IndexCorner({ card }: { card: Card }) {
   const fill = COLORS[card.suitColor];
   return (
-    <g transform={`translate(35 ${INDEX_Y})`} fill={fill}>
+    <g transform={`translate(${INDEX_X} ${INDEX_Y})`} fill={fill}>
       <text
-        y="28"
+        y={RANK_BASELINE}
         textAnchor="middle"
         fontFamily={DISPLAY}
         fontWeight={900}
-        fontSize={34}
+        fontSize={RANK_SIZE}
         fontVariant="tabular-nums"
       >
         {card.rank}
@@ -79,9 +78,8 @@ export function CardFace({
   const dA = layerOpacity(focus, "arboretum");
   const dB = layerOpacity(focus, "bohnanza");
   const flowerFill = COLORS[card.flowerFill];
-  const rankW = rankWidth(card.rank);
-  const centreTotal = 104 + 18 + rankW;
-  const centreStart = 60 + (258 - centreTotal) / 2;
+  const flowerSize = 104;
+  const flowerX = (CARD_WIDTH - flowerSize) / 2;
   const nameW = textWidth(card.stone, 17, 0.16, 0.58);
   const gemSize = 28;
   const gemGap = 12;
@@ -161,25 +159,12 @@ export function CardFace({
         <use
           href={`#${prefix}${card.flowerId}`}
           xlinkHref={`#${prefix}${card.flowerId}`}
-          x={centreStart}
+          x={flowerX}
           y={177}
-          width={104}
-          height={104}
+          width={flowerSize}
+          height={flowerSize}
           fill={flowerFill}
         />
-        <text
-          x={centreStart + 104 + 18 + rankW / 2}
-          y={229}
-          textAnchor="middle"
-          dominantBaseline="central"
-          fontFamily={DISPLAY}
-          fontWeight={900}
-          fontSize={86}
-          fill={COLORS.ink}
-          fontVariant="tabular-nums"
-        >
-          {card.rank}
-        </text>
       </g>
 
       <g style={{ opacity: dB, transition: EASE }}>

@@ -58,7 +58,7 @@ export function ContactSheet() {
             </div>
             <p className="body-copy">
               Corners: rank and suit. Top right: card number 1–104. Left rail:
-              tarot. Centre: flower and rank. Foot: gem, inverted.
+              tarot. Centre: flower. Foot: gem, inverted.
             </p>
           </div>
         </div>

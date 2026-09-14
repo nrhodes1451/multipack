@@ -128,6 +128,6 @@ export const FOCUS_NOTES: Record<ReadAsFocus, string> = {
   all: "All four systems at full weight — the printed state.",
   playing: "Only rank, suit and card number carry.",
   tarot: "Left rail only; empty on the 26 silent cards.",
-  arboretum: "Flower silhouette and rank; every card has a species.",
+  arboretum: "Flower silhouette; every card has a species.",
   bohnanza: "Foot band only; both copies of a rank and suit share a gem.",
 };

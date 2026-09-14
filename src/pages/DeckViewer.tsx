@@ -54,8 +54,8 @@ export function DeckViewer() {
             and 102 are the four knights. Majors occupy 53–62, 64–65 and 66–75.
           </p>
           <p className="body-copy">
-            Flowers are eight silhouettes, two per suit. The centre value is
-            the rank glyph. Species names are never printed.
+            Flowers are eight silhouettes, two per suit. Species names are
+            never printed.
           </p>
           <p className="body-copy">
             Both copies of a rank and suit share a gem, in contiguous runs
@@ -72,7 +72,7 @@ export function DeckViewer() {
             <dt>Left rail</dt>
             <dd>Tarot name and index. Empty on the 26 silent cards.</dd>
             <dt>Centre</dt>
-            <dd>Flower silhouette and rank glyph.</dd>
+            <dd>Flower silhouette.</dd>
             <dt>Foot</dt>
             <dd>Gem mark and name, inverted for the other way up.</dd>
           </dl>
