@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<![CDATA[<helmet>
+  <link rel="stylesheet" href="_ds/penrose-design-system-22c3d7d1-6a41-441d-b779-bd884eb12152/tokens/fonts.css">
+  <link rel="stylesheet" href="_ds/penrose-design-system-22c3d7d1-6a41-441d-b779-bd884eb12152/tokens/colors.css">
+  <link rel="stylesheet" href="_ds/penrose-design-system-22c3d7d1-6a41-441d-b779-bd884eb12152/tokens/typography.css">
+  <link rel="stylesheet" href="_ds/penrose-design-system-22c3d7d1-6a41-441d-b779-bd884eb12152/tokens/spacing.css">
+  <link rel="stylesheet" href="_ds/penrose-design-system-22c3d7d1-6a41-441d-b779-bd884eb12152/tokens/borders.css">
+  <link rel="stylesheet" href="_ds/penrose-design-system-22c3d7d1-6a41-441d-b779-bd884eb12152/tokens/motion.css">
+  <link rel="stylesheet" href="_ds/penrose-design-system-22c3d7d1-6a41-441d-b779-bd884eb12152/tokens/base.css">
+  <link rel="stylesheet" href="_ds/penrose-design-system-22c3d7d1-6a41-441d-b779-bd884eb12152/styles.css">
+  <script src="_ds/penrose-design-system-22c3d7d1-6a41-441d-b779-bd884eb12152/_ds_bundle.js"></script>
+  <style>
+    body { margin: 0; background: #FFFFFF; }
+    a { color: var(--pen-primary); text-decoration: none; border-bottom: 1px solid var(--pen-accent-gold); }
+    a:hover { color: var(--pen-primary-lift); }
+  </style>
+</helmet>
+
+<div style="max-width:1280px;margin:0 auto;padding:40px 32px 96px;font-family:Roboto,sans-serif;color:var(--pen-ink)">
+
+  <div style="display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:24px">
+    <div>
+      <div style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:48px;letter-spacing:0.1em;text-transform:uppercase;line-height:1">Swiss Army Deck</div>
+      <div style="font-family:'Roboto Condensed',sans-serif;font-weight:400;font-size:15px;letter-spacing:0.22em;text-transform:uppercase;margin-top:10px;color:var(--pen-primary)">104 cards · four systems on one face</div>
+    </div>
+    <div style="font-size:13px;line-height:1.5;max-width:360px;text-wrap:pretty">Two 52-card decks, a full 78-card tarot, the 104-card Bohnanza distribution and the 80-card Arboretum deck, printed once.</div>
+  </div>
+
+  <div style="height:1px;background:var(--pen-ink);margin:20px 0 0"></div>
+  <x-import component-from-global-scope="PenroseDesignSystem_22c3d7.DecoBand" shape="kite" count="26" height="18" color="var(--pen-primary-tint)" hint-size="100%,18px"></x-import>
+
+  <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:28px">
+    <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.18em;text-transform:uppercase;margin-right:8px">Read as</span>
+    <x-import component-from-global-scope="PenroseDesignSystem_22c3d7.Button" variant="{{vAll}}" onClick="{{fAll}}" hint-size="auto,48px">ALL FOUR</x-import>
+    <x-import component-from-global-scope="PenroseDesignSystem_22c3d7.Button" variant="{{vPlay}}" onClick="{{fPlay}}" hint-size="auto,48px">PLAYING</x-import>
+    <x-import component-from-global-scope="PenroseDesignSystem_22c3d7.Button" variant="{{vTarot}}" onClick="{{fTarot}}" hint-size="auto,48px">TAROT</x-import>
+    <x-import component-from-global-scope="PenroseDesignSystem_22c3d7.Button" variant="{{vArb}}" onClick="{{fArb}}" hint-size="auto,48px">ARBORETUM</x-import>
+    <x-import component-from-global-scope="PenroseDesignSystem_22c3d7.Button" variant="{{vBean}}" onClick="{{fBean}}" hint-size="auto,48px">BOHNANZA</x-import>
+  </div>
+  <div style="font-size:12px;letter-spacing:0.04em;margin-top:10px;color:var(--pen-primary)">{{focusNote}}</div>
+
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;margin-top:44px">
+
+    <div>
+      <div style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--pen-ink)">Arboretum species · centre field</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px 18px;margin-top:14px">
+        <sc-for list="{{speciesKey}}" as="s" hint-placeholder-count="10">
+          <div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid rgba(47,61,50,0.25)">
+            <span style="width:22px;height:22px;flex:0 0 22px;background:var(--pen-ink);clip-path:{{s.shape}}"></span>
+            <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.14em">{{s.name}}</span>
+            <span style="font-size:11px;margin-left:auto;color:var(--pen-primary);white-space:nowrap">{{s.rule}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div>
+      <div style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--pen-ink)">Bohnanza categories · foot band</div>
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:10px 18px;margin-top:14px">
+        <sc-for list="{{beanKey}}" as="b" hint-placeholder-count="8">
+          <div style="display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid rgba(47,61,50,0.25)">
+            <span style="width:20px;height:20px;flex:0 0 20px;background:var(--pen-primary);clip-path:{{b.shape}}"></span>
+            <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:12px;letter-spacing:0.14em">{{b.name}}</span>
+            <span style="font-size:11px;margin-left:auto;color:var(--pen-primary);white-space:nowrap">{{b.rule}}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="margin-top:52px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-bottom:6px;border-bottom:1px solid var(--pen-ink)">
+      <span style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.16em;text-transform:uppercase">Deck A · 52 cards</span>
+      <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--pen-primary)">Minor arcana, complete but for the knights</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:20px">
+      <sc-for list="{{cardsA}}" as="c" hint-placeholder-count="12">
+        <div style="position:relative;width:186px;height:260px;background:var(--pen-paper);outline:1px solid var(--pen-ink);flex:0 0 186px">
+          <div style="position:absolute;top:9px;left:10px;display:flex;flex-direction:column;align-items:center;line-height:0.92;color:{{c.suitColor}};opacity:{{c.dP}}">
+            <span style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:20px">{{c.rank}}</span>
+            <span style="font-size:15px">{{c.suitGlyph}}</span>
+          </div>
+          <div style="position:absolute;bottom:9px;right:10px;display:flex;flex-direction:column;align-items:center;line-height:0.92;color:{{c.suitColor}};transform:rotate(180deg);opacity:{{c.dP}}">
+            <span style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:20px">{{c.rank}}</span>
+            <span style="font-size:15px">{{c.suitGlyph}}</span>
+          </div>
+          <div style="position:absolute;top:12px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:5px;opacity:{{c.dP}}">
+            <span style="width:7px;height:7px;background:{{c.deckFill}};clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)"></span>
+            <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:9px;letter-spacing:0.2em">{{c.deck}}</span>
+          </div>
+          <sc-if value="{{c.hasRail}}" hint-placeholder-val="{{ true }}">
+            <div style="position:absolute;left:8px;top:46px;bottom:52px;display:flex;align-items:center;writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:9px;letter-spacing:0.16em;color:var(--pen-primary);white-space:nowrap;opacity:{{c.dT}}">{{c.tarotLine}}</div>
+          </sc-if>
+          <div style="position:absolute;left:30px;right:24px;top:46px;bottom:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+            <sc-if value="{{c.showArb}}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;align-items:center;gap:12px;opacity:{{c.dA}}">
+                <span style="width:44px;height:44px;flex:0 0 44px;background:var(--pen-ink);clip-path:{{c.speciesShape}}"></span>
+                <span style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:44px;line-height:0.8">{{c.arbValue}}</span>
+              </div>
+              <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:0.22em;opacity:{{c.dA}}">{{c.speciesName}}</span>
+            </sc-if>
+            <sc-if value="{{c.showBigTarot}}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;opacity:{{c.dT}}">
+                <span style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:30px;letter-spacing:0.06em;line-height:0.9;color:var(--pen-primary)">{{c.bigTop}}</span>
+                <span style="width:34px;height:1px;background:var(--pen-accent-gold)"></span>
+                <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.18em;text-wrap:balance">{{c.bigBottom}}</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{c.showPlain}}" hint-placeholder-val="{{ false }}">
+              <span style="width:40px;height:40px;background:var(--pen-primary-tint);clip-path:polygon(50% 0,100% 38%,50% 100%,0 38%)"></span>
+            </sc-if>
+          </div>
+          <div style="position:absolute;left:16px;right:16px;bottom:32px;height:1px;background:var(--pen-accent-gold);opacity:{{c.dB}}"></div>
+          <div style="position:absolute;left:34px;right:34px;bottom:10px;display:flex;align-items:center;justify-content:center;gap:7px;opacity:{{c.dB}}">
+            <span style="width:14px;height:14px;flex:0 0 14px;background:var(--pen-primary);clip-path:{{c.beanShape}}"></span>
+            <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:0.14em;color:var(--pen-primary)">{{c.beanName}}</span>
+            <span style="font-family:'Roboto Condensed',sans-serif;font-weight:400;font-size:10px;letter-spacing:0.08em">{{c.beanCount}}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="margin-top:52px">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding-bottom:6px;border-bottom:1px solid var(--pen-ink)">
+      <span style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:16px;letter-spacing:0.16em;text-transform:uppercase">Deck B · 52 cards</span>
+      <span style="font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--pen-primary)">Major arcana, four knights, 26 silent cards</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:20px">
+      <sc-for list="{{cardsB}}" as="c" hint-placeholder-count="12">
+        <div style="position:relative;width:186px;height:260px;background:{{c.faceBg}};outline:1px solid var(--pen-ink);flex:0 0 186px">
+          <div style="position:absolute;top:9px;left:10px;display:flex;flex-direction:column;align-items:center;line-height:0.92;color:{{c.suitColor}};opacity:{{c.dP}}">
+            <span style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:20px">{{c.rank}}</span>
+            <span style="font-size:15px">{{c.suitGlyph}}</span>
+          </div>
+          <div style="position:absolute;bottom:9px;right:10px;display:flex;flex-direction:column;align-items:center;line-height:0.92;color:{{c.suitColor}};transform:rotate(180deg);opacity:{{c.dP}}">
+            <span style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:20px">{{c.rank}}</span>
+            <span style="font-size:15px">{{c.suitGlyph}}</span>
+          </div>
+          <div style="position:absolute;top:12px;left:0;right:0;display:flex;justify-content:center;align-items:center;gap:5px;opacity:{{c.dP}}">
+            <span style="width:7px;height:7px;background:{{c.deckFill}};clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)"></span>
+            <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:9px;letter-spacing:0.2em">{{c.deck}}</span>
+          </div>
+          <sc-if value="{{c.hasRail}}" hint-placeholder-val="{{ true }}">
+            <div style="position:absolute;left:8px;top:46px;bottom:52px;display:flex;align-items:center;writing-mode:vertical-rl;transform:rotate(180deg);font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:9px;letter-spacing:0.16em;color:var(--pen-primary);white-space:nowrap;opacity:{{c.dT}}">{{c.tarotLine}}</div>
+          </sc-if>
+          <div style="position:absolute;left:30px;right:24px;top:46px;bottom:58px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px">
+            <sc-if value="{{c.showArb}}" hint-placeholder-val="{{ true }}">
+              <div style="display:flex;align-items:center;gap:12px;opacity:{{c.dA}}">
+                <span style="width:44px;height:44px;flex:0 0 44px;background:var(--pen-ink);clip-path:{{c.speciesShape}}"></span>
+                <span style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:44px;line-height:0.8">{{c.arbValue}}</span>
+              </div>
+              <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:0.22em;opacity:{{c.dA}}">{{c.speciesName}}</span>
+            </sc-if>
+            <sc-if value="{{c.showBigTarot}}" hint-placeholder-val="{{ false }}">
+              <div style="display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;opacity:{{c.dT}}">
+                <span style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:30px;letter-spacing:0.06em;line-height:0.9;color:var(--pen-primary)">{{c.bigTop}}</span>
+                <span style="width:34px;height:1px;background:var(--pen-accent-gold)"></span>
+                <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:11px;letter-spacing:0.18em;text-wrap:balance">{{c.bigBottom}}</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{c.showPlain}}" hint-placeholder-val="{{ false }}">
+              <span style="width:40px;height:40px;background:var(--pen-primary-tint);clip-path:polygon(50% 0,100% 38%,50% 100%,0 38%)"></span>
+            </sc-if>
+          </div>
+          <div style="position:absolute;left:16px;right:16px;bottom:32px;height:1px;background:var(--pen-accent-gold);opacity:{{c.dB}}"></div>
+          <div style="position:absolute;left:34px;right:34px;bottom:10px;display:flex;align-items:center;justify-content:center;gap:7px;opacity:{{c.dB}}">
+            <span style="width:14px;height:14px;flex:0 0 14px;background:var(--pen-primary);clip-path:{{c.beanShape}}"></span>
+            <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;font-size:10px;letter-spacing:0.14em;color:var(--pen-primary)">{{c.beanName}}</span>
+            <span style="font-family:'Roboto Condensed',sans-serif;font-weight:400;font-size:10px;letter-spacing:0.08em">{{c.beanCount}}</span>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div style="margin-top:64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:36px">
+    <div>
+      <div style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--pen-ink)">Mapping strategy</div>
+      <p style="font-size:13px;line-height:1.6;text-wrap:pretty">Every identity is derived from the playing card, so nothing has to be memorised twice. Deck A carries the 52 minor arcana less the knights; the four knights sit on deck B's jacks. The 22 majors take deck B's spades in rank order, then deck B's hearts ace through ten.</p>
+      <p style="font-size:13px;line-height:1.6;text-wrap:pretty">Arboretum species are the eight suit-and-deck pairs, valued by rank ace through eight; the ninth and tenth species are the eight nines and the eight tens, valued in the same suit-deck order. Courts carry no species, which is why the centre field is free for the majors and courts to use.</p>
+      <p style="font-size:13px;line-height:1.6;text-wrap:pretty">Bohnanza categories ignore the deck letter entirely: both copies of a card share a category, so the eight bands are contiguous runs of the deck read spades to clubs, ace to king — ten pairs, then nine, eight, seven, six, five, four and three.</p>
+    </div>
+    <div>
+      <div style="font-family:'Roboto Condensed',sans-serif;font-weight:900;font-size:14px;letter-spacing:0.16em;text-transform:uppercase;padding-bottom:6px;border-bottom:1px solid var(--pen-ink)">Reading the face</div>
+      <div style="display:grid;grid-template-columns:auto 1fr;gap:8px 14px;font-size:13px;line-height:1.5;margin-top:14px">
+        <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;letter-spacing:0.14em;font-size:11px;text-transform:uppercase">Corners</span><span>Rank and suit, diagonally mirrored. Red suits are set in primary, not scarlet.</span>
+        <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;letter-spacing:0.14em;font-size:11px;text-transform:uppercase">Head</span><span>Deck letter with a gold rhomb for B, ink for A.</span>
+        <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;letter-spacing:0.14em;font-size:11px;text-transform:uppercase">Left rail</span><span>Tarot, rotated out of the reading path until wanted.</span>
+        <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;letter-spacing:0.14em;font-size:11px;text-transform:uppercase">Centre</span><span>Arboretum species and value; where there is no species, the tarot card takes the field.</span>
+        <span style="font-family:'Roboto Condensed',sans-serif;font-weight:700;letter-spacing:0.14em;font-size:11px;text-transform:uppercase">Foot</span><span>Bohnanza category under a gold hairline, with its count in the deck.</span>
+      </div>
+      <div style="margin-top:22px;font-size:13px;line-height:1.6">Contact sheet: <a href="Contact%20Sheet.dc.html">all 104 faces, printable</a>. Data: <a href="deck-mapping.csv">CSV</a> · <a href="deck-mapping.json">JSON</a>.</div>
+    </div>
+  </div>
+
+</div>]]>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;focus&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;all&quot;,&quot;playing&quot;,&quot;tarot&quot;,&quot;arboretum&quot;,&quot;bohnanza&quot;],&quot;default&quot;:&quot;all&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Reading&quot;},&quot;deckBTint&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Reading&quot;}}">
+class Component extends DCLogic {
+  state = { focus: null };
+
+  build() {
+    const SUITS = [
+      { k: "S", g: "\u2660", n: "SPADES", t: "SWORDS", red: false },
+      { k: "H", g: "\u2665", n: "HEARTS", t: "CUPS", red: true },
+      { k: "D", g: "\u2666", n: "DIAMONDS", t: "PENTACLES", red: true },
+      { k: "C", g: "\u2663", n: "CLUBS", t: "WANDS", red: false }
+    ];
+    const RANKS = ["A","2","3","4","5","6","7","8","9","10","J","Q","K"];
+    const MAJORS = ["THE FOOL","THE MAGICIAN","THE HIGH PRIESTESS","THE EMPRESS","THE EMPEROR","THE HIEROPHANT","THE LOVERS","THE CHARIOT","STRENGTH","THE HERMIT","WHEEL OF FORTUNE","JUSTICE","THE HANGED MAN","DEATH","TEMPERANCE","THE DEVIL","THE TOWER","THE STAR","THE MOON","THE SUN","JUDGEMENT","THE WORLD"];
+    const ROMAN = ["0","I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII","XIII","XIV","XV","XVI","XVII","XVIII","XIX","XX","XXI"];
+    const SPECIES = [
+      { name: "FERN", shape: "polygon(50% 0,88% 34%,72% 100%,28% 100%,12% 34%)" },
+      { name: "SPIRE", shape: "polygon(50% 0,86% 100%,14% 100%)" },
+      { name: "PALM", shape: "polygon(50% 100%,0 26%,22% 6%,50% 22%,78% 6%,100% 26%)" },
+      { name: "LOTUS", shape: "polygon(50% 0,70% 46%,100% 26%,86% 100%,14% 100%,0 26%,30% 46%)" },
+      { name: "IVY", shape: "polygon(50% 100%,14% 62%,0 24%,30% 30%,50% 0,70% 30%,100% 24%,86% 62%)" },
+      { name: "REED", shape: "polygon(38% 0,62% 0,74% 100%,26% 100%)" },
+      { name: "BRIAR", shape: "polygon(50% 0,78% 58%,100% 100%,50% 80%,0 100%,22% 58%)" },
+      { name: "FROND", shape: "polygon(0 100%,0 40%,50% 0,100% 40%,100% 100%,50% 62%)" },
+      { name: "CONE", shape: "polygon(50% 0,80% 26%,68% 52%,90% 74%,50% 100%,10% 74%,32% 52%,20% 26%)" },
+      { name: "BLOOM", shape: "polygon(50% 0,66% 16%,90% 10%,84% 34%,100% 50%,84% 66%,90% 90%,66% 84%,50% 100%,34% 84%,10% 90%,16% 66%,0 50%,16% 34%,10% 10%,34% 16%)" }
+    ];
+    const BEANS = [
+      { name: "EMBER", count: 20, shape: "circle(50% at 50% 50%)" },
+      { name: "COIN", count: 18, shape: "polygon(50% 0,100% 50%,50% 100%,0 50%)" },
+      { name: "MOON", count: 16, shape: "polygon(50% 0,100% 100%,0 100%)" },
+      { name: "WAVE", count: 14, shape: "polygon(0 0,100% 0,100% 100%,0 100%)" },
+      { name: "SHIELD", count: 12, shape: "polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%)" },
+      { name: "SPIRAL", count: 10, shape: "polygon(50% 0,100% 40%,50% 100%,0 40%)" },
+      { name: "QUARTZ", count: 8, shape: "polygon(50% 0,100% 100%,50% 68%,0 100%)" },
+      { name: "CROWN", count: 6, shape: "polygon(0 100%,0 44%,18% 14%,50% 0,82% 14%,100% 44%,100% 100%)" }
+    ];
+    const RANKNAME = { A: "ACE", J: "PAGE", Q: "QUEEN", K: "KING" };
+    const CUTS = [10, 19, 27, 34, 40, 45, 49, 52];
+    const majorOfB = (k, ri) => k === "S" ? [0,1,2,3,4,5,6,7,8,9,-1,10,11][ri] : (k === "H" && ri <= 9 ? 12 + ri : -1);
+
+    const cards = [];
+    const beanSpan = {};
+    ["A", "B"].forEach((deck, di) => SUITS.forEach((s, si) => RANKS.forEach((r, ri) => {
+      const sd = di * 4 + si;
+      let spId = 0, val = 0;
+      if (ri <= 7) { spId = sd + 1; val = ri + 1; }
+      else if (ri === 8) { spId = 9; val = sd + 1; }
+      else if (ri === 9) { spId = 10; val = sd + 1; }
+      let tType = "", tLine = "", bigTop = "", bigBottom = "";
+      if (deck === "A") {
+        tType = "minor";
+        const rn = RANKNAME[r] || r;
+        tLine = rn + " \u00b7 " + s.t;
+        bigTop = rn; bigBottom = "OF " + s.t;
+      } else if (r === "J") {
+        tType = "minor"; tLine = "KNIGHT \u00b7 " + s.t; bigTop = "KNIGHT"; bigBottom = "OF " + s.t;
+      } else {
+        const m = majorOfB(s.k, ri);
+        if (m >= 0) { tType = "major"; tLine = ROMAN[m] + " \u00b7 " + MAJORS[m]; bigTop = ROMAN[m]; bigBottom = MAJORS[m]; }
+      }
+      const unit = si * 13 + ri;
+      let bi = 0; while (unit >= CUTS[bi]) bi++;
+      const bean = BEANS[bi];
+      if (!beanSpan[bi]) beanSpan[bi] = [s.g + r, s.g + r]; else beanSpan[bi][1] = s.g + r;
+      const sp = spId ? SPECIES[spId - 1] : null;
+      cards.push({
+        key: deck + s.k + r, deck, rank: r, suitGlyph: s.g,
+        suitColor: s.red ? "var(--pen-primary)" : "var(--pen-ink)",
+        deckFill: deck === "B" ? "var(--pen-accent-gold)" : "var(--pen-ink)",
+        hasTarot: !!tType, tarotLine: tLine, bigTop, bigBottom,
+        showArb: !!sp, speciesName: sp ? sp.name : "", speciesShape: sp ? sp.shape : "none",
+        arbValue: val || "",
+        hasRail: !!tType && !!sp,
+        showBigTarot: !!tType && !sp,
+        showPlain: !tType && !sp,
+        beanName: bean.name, beanShape: bean.shape, beanCount: "\u00d7" + bean.count
+      });
+    })));
+    const speciesKey = SPECIES.map((s, i) => ({
+      name: s.name, shape: s.shape,
+      rule: i < 8 ? ["\u2660A","\u2665A","\u2666A","\u2663A","\u2660B","\u2665B","\u2666B","\u2663B"][i] + " \u00b7 A\u20138" : (i === 8 ? "all nines" : "all tens")
+    }));
+    const beanKey = BEANS.map((b, i) => ({
+      name: b.name, shape: b.shape, count: b.count,
+      rule: b.count + " \u00b7 " + beanSpan[i][0] + "\u2013" + beanSpan[i][1]
+    }));
+    return { cards, speciesKey, beanKey };
+  }
+
+  renderVals() {
+    if (!this._d) this._d = this.build();
+    const focus = this.state.focus || this.props.focus || "all";
+    const dim = (layer) => (focus === "all" || focus === layer) ? "1" : "0.12";
+    const dP = dim("playing"), dT = dim("tarot"), dA = dim("arboretum"), dB = dim("bohnanza");
+    const tint = this.props.deckBTint === true;
+    const decorate = (c) => Object.assign({}, c, {
+      dP, dT, dA, dB,
+      faceBg: tint && c.deck === "B" ? "var(--pen-accent-blush)" : "var(--pen-paper)"
+    });
+    const notes = {
+      all: "All four systems at full weight \u2014 the printed state.",
+      playing: "Only rank, suit and deck letter carry.",
+      tarot: "Left rail and the centre field of the courts and majors.",
+      arboretum: "Species glyph and value; 24 courts stay silent.",
+      bohnanza: "Foot band only; both copies of a card share a category."
+    };
+    const v = (k) => focus === k ? "primary" : "quiet";
+    const set = (k) => () => this.setState({ focus: k });
+    return {
+      cardsA: this._d.cards.filter(c => c.deck === "A").map(decorate),
+      cardsB: this._d.cards.filter(c => c.deck === "B").map(decorate),
+      speciesKey: this._d.speciesKey,
+      beanKey: this._d.beanKey,
+      focusNote: notes[focus],
+      vAll: v("all"), vPlay: v("playing"), vTarot: v("tarot"), vArb: v("arboretum"), vBean: v("bohnanza"),
+      fAll: set("all"), fPlay: set("playing"), fTarot: set("tarot"), fArb: set("arboretum"), fBean: set("bohnanza")
+    };
+  }
+}
+</script>
+</body>
+</html>
