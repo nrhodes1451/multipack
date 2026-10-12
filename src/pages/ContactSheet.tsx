@@ -1,8 +1,9 @@
 import { useMemo } from "react";
 import { CardBack } from "../components/CardBack.tsx";
 import { CardFace } from "../components/CardFace.tsx";
-import { StoneKey, FlowerKey } from "../components/Keys.tsx";
+import { GemKey, LexiconKey, PlantKey } from "../components/Keys.tsx";
 import { buildDeck } from "../deck/encoding.ts";
+import { ARTWORK_NOTICE } from "../tokens.ts";
 
 export function ContactSheet() {
   const cards = useMemo(() => buildDeck(), []);
@@ -35,31 +36,19 @@ export function ContactSheet() {
           <span>Sheet {pages.length + 1} of {pages.length + 1}</span>
         </div>
         <div className="sheet-key">
-          <FlowerKey />
-          <StoneKey />
+          <PlantKey />
+          <GemKey />
           <div>
-            <div className="section-title">Tarot</div>
-            <p className="body-copy">
-              Cards 1–52 are the minor arcana less the knights: ace through
-              ten, then page, queen, king, in swords, cups, pentacles and
-              wands. Jacks 63, 76, 89 and 102 are the four knights.
-            </p>
-            <p className="body-copy">
-              The 22 majors occupy cards 53–62 (spades ace–ten), 64–65 (queen
-              and king of spades: the wheel and justice), and 66–75 (hearts
-              ace–ten: the hanged man to the world).
-            </p>
-            <p className="body-copy">
-              Twenty-six cards carry no tarot identity — empty rail. The rest
-              of 53–104 outside the knights and majors.
-            </p>
+            <LexiconKey />
             <div className="section-title" style={{ marginTop: 14 }}>
               Face
             </div>
             <p className="body-copy">
-              Corners: rank and suit. Top right: card number 1–104. Left rail:
-              tarot. Centre: flower. Foot: gem, inverted.
+              Top left: rank and suit plant. Top right: card number 1–104.
+              Centre: plant and name. Bottom left: gem and beanometer. Bottom
+              right: Lexicon letter and value, upside down for play.
             </p>
+            <p className="body-copy">{ARTWORK_NOTICE}</p>
           </div>
         </div>
       </section>

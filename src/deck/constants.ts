@@ -1,8 +1,8 @@
 export const SUITS = [
-  { key: "S", glyph: "\u2660", tarot: "SWORDS", red: false },
-  { key: "H", glyph: "\u2665", tarot: "CUPS", red: true },
-  { key: "D", glyph: "\u2666", tarot: "PENTACLES", red: true },
-  { key: "C", glyph: "\u2663", tarot: "WANDS", red: false },
+  { key: "C", glyph: "♣", red: false },
+  { key: "D", glyph: "♦", red: true },
+  { key: "H", glyph: "♥", red: true },
+  { key: "S", glyph: "♠", red: false },
 ] as const;
 
 export const RANKS = [
@@ -21,113 +21,65 @@ export const RANKS = [
   "K",
 ] as const;
 
-export const RANK_NAME: Record<string, string> = {
-  A: "ACE",
-  "2": "TWO",
-  "3": "THREE",
-  "4": "FOUR",
-  "5": "FIVE",
-  "6": "SIX",
-  "7": "SEVEN",
-  "8": "EIGHT",
-  "9": "NINE",
-  "10": "TEN",
-  J: "PAGE",
-  Q: "QUEEN",
-  K: "KING",
-};
-
-export const SPECIES = [
-  { name: "DAHLIA", deck: "A", suit: "S", id: "fl-dahlia" },
-  { name: "LILY", deck: "A", suit: "H", id: "fl-lily" },
-  { name: "TULIP", deck: "A", suit: "D", id: "fl-tulip" },
-  { name: "POPPY", deck: "A", suit: "C", id: "fl-poppy" },
-  { name: "ROSE", deck: "B", suit: "S", id: "fl-rose" },
-  { name: "LOTUS", deck: "B", suit: "H", id: "fl-lotus" },
-  { name: "IRIS", deck: "B", suit: "D", id: "fl-iris" },
-  { name: "DAISY", deck: "B", suit: "C", id: "fl-daisy" },
+export const PLANTS = [
+  { name: "Iris", deck: "A", suit: "C", id: "iris" },
+  { name: "Tulip", deck: "A", suit: "D", id: "tulip" },
+  { name: "Hosta", deck: "A", suit: "H", id: "hosta" },
+  { name: "Monstera", deck: "A", suit: "S", id: "monstera" },
+  { name: "Clover", deck: "B", suit: "C", id: "clover" },
+  { name: "Fuchsia", deck: "B", suit: "D", id: "fuchsia" },
+  { name: "Eastern Redbud", deck: "B", suit: "H", id: "eastern-redbud" },
+  { name: "Anthurium", deck: "B", suit: "S", id: "anthurium" },
 ] as const;
 
-export const STONES = [
-  { name: "QUARTZ", count: 20 },
-  { name: "AMETHYST", count: 18 },
-  { name: "JADE", count: 16 },
-  { name: "OPAL", count: 14 },
-  { name: "SAPPHIRE", count: 12 },
-  { name: "EMERALD", count: 10 },
-  { name: "RUBY", count: 8 },
-  { name: "DIAMOND", count: 6 },
+/**
+ * Bohnanza's eight beans, renamed as gems. `beanometer` is beans needed for
+ * 1, 2, 3 and 4 coins; null where the bean has no step.
+ */
+export const GEMS = [
+  { name: "Citrine", id: "citrine", bean: "Blue", count: 20, beanometer: [4, 6, 8, 10] },
+  { name: "Topaz", id: "topaz", bean: "Chili", count: 18, beanometer: [3, 6, 8, 9] },
+  { name: "Peridot", id: "peridot", bean: "Stink", count: 16, beanometer: [3, 5, 7, 8] },
+  { name: "Quartz", id: "quartz", bean: "Green", count: 14, beanometer: [3, 5, 6, 7] },
+  { name: "Amber", id: "amber", bean: "Soy", count: 12, beanometer: [2, 4, 6, 7] },
+  { name: "Sapphire", id: "sapphire", bean: "Black-eyed", count: 10, beanometer: [2, 4, 5, 6] },
+  { name: "Emerald", id: "emerald", bean: "Red", count: 8, beanometer: [2, 3, 4, 5] },
+  { name: "Ruby", id: "ruby", bean: "Garden", count: 6, beanometer: [null, 2, 3, null] },
 ] as const;
 
 export const CUTS = [10, 19, 27, 34, 40, 45, 49, 52] as const;
 
-export const MAJORS = [
-  "THE FOOL",
-  "THE MAGICIAN",
-  "THE HIGH PRIESTESS",
-  "THE EMPRESS",
-  "THE EMPEROR",
-  "THE HIEROPHANT",
-  "THE LOVERS",
-  "THE CHARIOT",
-  "STRENGTH",
-  "THE HERMIT",
-  "WHEEL OF FORTUNE",
-  "JUSTICE",
-  "THE HANGED MAN",
-  "DEATH",
-  "TEMPERANCE",
-  "THE DEVIL",
-  "THE TOWER",
-  "THE STAR",
-  "THE MOON",
-  "THE SUN",
-  "JUDGEMENT",
-  "THE WORLD",
+/** Standard 52-card Lexicon deck: letters, copies and penalty values. */
+export const LEXICON = [
+  { letters: "AEI", copies: 4, value: 10 },
+  { letters: "OU", copies: 3, value: 8 },
+  { letters: "HLRSTW", copies: 3, value: 8 },
+  { letters: "CKMNP", copies: 1, value: 8 },
+  { letters: "DJV", copies: 1, value: 6 },
+  { letters: "GQY", copies: 1, value: 4 },
+  { letters: "BFXZ", copies: 1, value: 2 },
 ] as const;
 
-export const ROMAN = [
-  "0",
-  "I",
-  "II",
-  "III",
-  "IV",
-  "V",
-  "VI",
-  "VII",
-  "VIII",
-  "IX",
-  "X",
-  "XI",
-  "XII",
-  "XIII",
-  "XIV",
-  "XV",
-  "XVI",
-  "XVII",
-  "XVIII",
-  "XIX",
-  "XX",
-  "XXI",
-] as const;
+export const LEXICON_MASTER = { letter: "★", value: 15 } as const;
+
+export const LEXICON_SEEDS = { A: 0x1e71c0, B: 0x2b0b5 } as const;
 
 export type DeckLetter = "A" | "B";
 export type SuitKey = (typeof SUITS)[number]["key"];
 export type Rank = (typeof RANKS)[number];
-export type FlowerId = (typeof SPECIES)[number]["id"];
-export type StoneName = (typeof STONES)[number]["name"];
-export type TarotType = "minor" | "major" | "";
+export type PlantId = (typeof PLANTS)[number]["id"];
+export type GemId = (typeof GEMS)[number]["id"];
 export type ReadAsFocus =
   | "all"
   | "playing"
-  | "tarot"
+  | "lexicon"
   | "arboretum"
   | "bohnanza";
 
 export const FOCUS_NOTES: Record<ReadAsFocus, string> = {
-  all: "All four systems at full weight — the printed state.",
-  playing: "Only rank, suit and card number carry.",
-  tarot: "Left rail only; empty on the 26 silent cards.",
-  arboretum: "Flower silhouette; every card has a species.",
-  bohnanza: "Foot band only; both copies of a rank and suit share a gem.",
+  all: "All four systems at full weight, as printed.",
+  playing: "Only rank, suit and card number count.",
+  lexicon: "Letter and value only, upside down. Turn the cards round to play.",
+  arboretum: "Plant and name. Every card has one of eight species.",
+  bohnanza: "Gem, name and beanometer. Both copies of a rank and suit share a gem.",
 };

@@ -2,6 +2,7 @@
   "name": "multipack",
   "private": true,
   "version": "0.0.0",
+  "license": "MIT",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,13 +12,12 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "generate:mapping": "tsx --tsconfig tsconfig.app.json scripts/generate-mapping.ts",
+    "extract:symbols": "tsx --tsconfig tsconfig.app.json scripts/extract-symbols.ts",
     "export": "tsx --tsconfig tsconfig.app.json scripts/export.ts",
     "export:mpc": "tsx --tsconfig tsconfig.app.json scripts/export-mpc.ts",
     "generate:readme-images": "tsx --tsconfig tsconfig.app.json scripts/readme-images.ts"
   },
   "dependencies": {
-    "@fontsource/roboto": "^5.2.10",
-    "@fontsource/roboto-condensed": "^5.2.10",
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-router-dom": "^7.13.0"
@@ -33,7 +33,6 @@
     "tsx": "^4.21.0",
     "typescript": "~6.0.2",
     "vite": "^8.3.0",
-    "vitest": "^4.0.18",
-    "wawoff2": "^2.0.1"
+    "vitest": "^4.0.18"
   }
 }

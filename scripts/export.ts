@@ -6,9 +6,12 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { CardBack } from "../src/components/CardBack.tsx";
 import { CardFace } from "../src/components/CardFace.tsx";
 import { buildDeck } from "../src/deck/encoding.ts";
+import { FONT_DIR, FONTS } from "./fonts.ts";
 import {
+  ARTWORK_NOTICE,
   CARD_HEIGHT,
   CARD_WIDTH,
+  COLORS,
   MOCK_DPI,
   PRINT_SCALE_300DPI,
 } from "../src/tokens.ts";
@@ -49,10 +52,10 @@ function scaleFor(dpi: number) {
   return dpi / MOCK_DPI;
 }
 
-const FONT_CSS = `@font-face{font-family:'Roboto Condensed';font-weight:400;font-style:normal;src:url('../fonts/roboto-condensed-latin-400-normal.woff2') format('woff2')}
-@font-face{font-family:'Roboto Condensed';font-weight:700;font-style:normal;src:url('../fonts/roboto-condensed-latin-700-normal.woff2') format('woff2')}
-@font-face{font-family:'Roboto Condensed';font-weight:900;font-style:normal;src:url('../fonts/roboto-condensed-latin-900-normal.woff2') format('woff2')}
-@font-face{font-family:'Roboto';font-weight:400;font-style:normal;src:url('../fonts/roboto-latin-400-normal.woff2') format('woff2')}`;
+const FONT_CSS = FONTS.map(
+  (f) =>
+    `@font-face{font-family:'${f.family}';font-weight:${f.weight};font-style:normal;src:url('../fonts/${f.file}') format('truetype')}`,
+).join("\n");
 
 function wrapSvg(markup: string, bleed: number, width: number, height: number) {
   const inner = markup.replace(
@@ -60,13 +63,14 @@ function wrapSvg(markup: string, bleed: number, width: number, height: number) {
     `$1$2<style>${FONT_CSS}</style>`,
   );
   if (bleed <= 0) {
-    return `<?xml version="1.0" encoding="UTF-8"?>\n${inner}\n`;
+    return `<?xml version="1.0" encoding="UTF-8"?>\n<!-- ${ARTWORK_NOTICE} -->\n${inner}\n`;
   }
   const totalW = width + bleed * 2;
   const totalH = height + bleed * 2;
   return `<?xml version="1.0" encoding="UTF-8"?>
+<!-- ${ARTWORK_NOTICE} -->
 <svg xmlns="http://www.w3.org/2000/svg" width="${totalW}" height="${totalH}" viewBox="0 0 ${totalW} ${totalH}">
-  <rect width="100%" height="100%" fill="#FFFFFF"/>
+  <rect width="100%" height="100%" fill="${COLORS.paper}"/>
   <g transform="translate(${bleed} ${bleed})">${inner}</g>
 </svg>
 `;
@@ -74,28 +78,10 @@ function wrapSvg(markup: string, bleed: number, width: number, height: number) {
 
 function copyFonts(outFonts: string) {
   mkdirSync(outFonts, { recursive: true });
-  const root = join(dirname(fileURLToPath(import.meta.url)), "..");
-  const files = [
-    [
-      "node_modules/@fontsource/roboto-condensed/files/roboto-condensed-latin-400-normal.woff2",
-      "roboto-condensed-latin-400-normal.woff2",
-    ],
-    [
-      "node_modules/@fontsource/roboto-condensed/files/roboto-condensed-latin-700-normal.woff2",
-      "roboto-condensed-latin-700-normal.woff2",
-    ],
-    [
-      "node_modules/@fontsource/roboto-condensed/files/roboto-condensed-latin-900-normal.woff2",
-      "roboto-condensed-latin-900-normal.woff2",
-    ],
-    [
-      "node_modules/@fontsource/roboto/files/roboto-latin-400-normal.woff2",
-      "roboto-latin-400-normal.woff2",
-    ],
-  ] as const;
-  for (const [src, dest] of files) {
-    copyFileSync(join(root, src), join(outFonts, dest));
+  for (const f of FONTS) {
+    copyFileSync(join(FONT_DIR, f.file), join(outFonts, f.file));
   }
+  copyFileSync(join(FONT_DIR, "OFL.txt"), join(outFonts, "OFL.txt"));
 }
 
 const opts = parseArgs(process.argv.slice(2));
@@ -125,7 +111,7 @@ for (const card of cards) {
 }
 
 const backMarkup = renderToStaticMarkup(
-  createElement(CardBack, { embedDefs: true, width, height }),
+  createElement(CardBack, { width, height }),
 );
 writeFileSync(join(outDir, "back.svg"), wrapSvg(backMarkup, bleed, width, height));
 

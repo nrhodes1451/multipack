@@ -6,10 +6,10 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { CardBack } from "../src/components/CardBack.tsx";
 import { CardFace } from "../src/components/CardFace.tsx";
 import { cardFrom } from "../src/deck/encoding.ts";
-import { CARD_HEIGHT, CARD_WIDTH } from "../src/tokens.ts";
+import { ARTWORK_NOTICE, CARD_HEIGHT, CARD_WIDTH } from "../src/tokens.ts";
 
 function wrap(markup: string) {
-  return `<?xml version="1.0" encoding="UTF-8"?>\n${markup}\n`;
+  return `<?xml version="1.0" encoding="UTF-8"?>\n<!-- ${ARTWORK_NOTICE} -->\n${markup}\n`;
 }
 
 const root = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -18,7 +18,7 @@ mkdirSync(outDir, { recursive: true });
 
 const face = renderToStaticMarkup(
   createElement(CardFace, {
-    card: cardFrom("A", "C", "10"),
+    card: cardFrom("A", "C", "4"),
     embedDefs: true,
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
@@ -26,7 +26,6 @@ const face = renderToStaticMarkup(
 );
 const back = renderToStaticMarkup(
   createElement(CardBack, {
-    embedDefs: true,
     width: CARD_WIDTH,
     height: CARD_HEIGHT,
   }),

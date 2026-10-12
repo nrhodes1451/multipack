@@ -1,16 +1,25 @@
-@import "@fontsource/roboto/400.css";
-@import "@fontsource/roboto-condensed/400.css";
-@import "@fontsource/roboto-condensed/700.css";
-@import "@fontsource/roboto-condensed/900.css";
+@font-face {
+  font-family: "Linux Biolinum";
+  font-weight: 400;
+  font-style: normal;
+  src: url("./assets/fonts/LinBiolinum_R.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Linux Biolinum";
+  font-weight: 700;
+  font-style: normal;
+  src: url("./assets/fonts/LinBiolinum_RB.ttf") format("truetype");
+}
 
 :root {
-  --pen-ink: #2f3d32;
-  --pen-paper: #ffffff;
-  --pen-primary: #7a104e;
-  --pen-primary-lift: #c23585;
-  --pen-primary-tint: #ffcce9;
-  --pen-accent-gold: #e9cb4f;
-  --pen-rule: rgba(47, 61, 50, 0.25);
+  --pen-ink: #180c13;
+  --pen-paper: #f3eee5;
+  --pen-page: #fbf9f5;
+  --pen-red: #9f0a0a;
+  --pen-red-light: #cf4747;
+  --pen-grey: #4d4d4d;
+  --pen-rule: rgba(24, 12, 19, 0.2);
 }
 
 * {
@@ -20,25 +29,25 @@
 html,
 body {
   margin: 0;
-  background: var(--pen-paper);
+  background: var(--pen-page);
   color: var(--pen-ink);
-  font-family: Roboto, sans-serif;
+  font-family: "Linux Biolinum", serif;
 }
 
 a {
-  color: var(--pen-primary);
+  color: var(--pen-red);
   text-decoration: none;
-  border-bottom: 1px solid var(--pen-accent-gold);
+  border-bottom: 1px solid var(--pen-red-light);
 }
 
 a:hover {
-  color: var(--pen-primary-lift);
+  color: var(--pen-red-light);
 }
 
 h1,
 h2 {
-  font-family: "Roboto Condensed", sans-serif;
-  font-weight: 900;
+  font-family: "Linux Biolinum", serif;
+  font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin: 0;
@@ -59,7 +68,7 @@ h2 {
   gap: 24px;
   padding: 16px 32px;
   border-bottom: 1px solid var(--pen-ink);
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Linux Biolinum", serif;
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.18em;
@@ -73,7 +82,7 @@ h2 {
 
 .site-nav a.active,
 .site-nav a:hover {
-  color: var(--pen-primary);
+  color: var(--pen-red);
 }
 
 .page-wrap {
@@ -91,13 +100,13 @@ h2 {
 }
 
 .kicker {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Linux Biolinum", serif;
   font-weight: 400;
   font-size: 15px;
   letter-spacing: 0.22em;
   text-transform: uppercase;
   margin: 10px 0 0;
-  color: var(--pen-primary);
+  color: var(--pen-red);
 }
 
 .lede {
@@ -131,7 +140,7 @@ h2 {
 }
 
 .read-as-label {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Linux Biolinum", serif;
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.18em;
@@ -140,35 +149,35 @@ h2 {
 }
 
 .seg {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Linux Biolinum", serif;
   font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   padding: 12px 16px;
   border: 1px solid var(--pen-ink);
-  background: var(--pen-paper);
+  background: var(--pen-page);
   color: var(--pen-ink);
   cursor: pointer;
   border-radius: 0;
 }
 
 .seg.primary {
-  background: var(--pen-primary);
-  border-color: var(--pen-primary);
+  background: var(--pen-red);
+  border-color: var(--pen-red);
   color: var(--pen-paper);
 }
 
 .seg.quiet:hover {
-  color: var(--pen-primary-lift);
-  border-color: var(--pen-primary-lift);
+  color: var(--pen-red-light);
+  border-color: var(--pen-red-light);
 }
 
 .focus-note {
   font-size: 12px;
   letter-spacing: 0.04em;
   margin-top: 10px;
-  color: var(--pen-primary);
+  color: var(--pen-red);
 }
 
 .keys-grid {
@@ -179,8 +188,8 @@ h2 {
 }
 
 .section-title {
-  font-family: "Roboto Condensed", sans-serif;
-  font-weight: 900;
+  font-family: "Linux Biolinum", serif;
+  font-weight: 700;
   font-size: 14px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
@@ -188,14 +197,14 @@ h2 {
   border-bottom: 1px solid var(--pen-ink);
 }
 
-.flower-key {
+.plant-key {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px 16px;
   margin-top: 20px;
 }
 
-.flower-key-item {
+.plant-key-item {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -206,12 +215,12 @@ h2 {
   display: block;
   width: 100%;
   height: 1px;
-  background: var(--pen-accent-gold);
+  background: var(--pen-red-light);
 }
 
 .key-name {
-  font-family: "Roboto Condensed", sans-serif;
-  font-weight: 900;
+  font-family: "Linux Biolinum", serif;
+  font-weight: 700;
   font-size: 12px;
   letter-spacing: 0.14em;
   text-align: center;
@@ -219,17 +228,17 @@ h2 {
 
 .key-meta {
   font-size: 12px;
-  color: var(--pen-primary);
+  color: var(--pen-red);
 }
 
-.stone-key {
+.gem-key {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px 20px;
   margin-top: 16px;
 }
 
-.stone-key-item {
+.gem-key-item {
   display: flex;
   align-items: center;
   gap: 12px;
@@ -237,11 +246,11 @@ h2 {
   border-bottom: 1px solid var(--pen-rule);
 }
 
-.stone-key-item .key-name {
+.gem-key-item .key-name {
   font-weight: 700;
 }
 
-.stone-key-item .key-meta {
+.gem-key-item .key-meta {
   margin-left: auto;
   white-space: nowrap;
   font-size: 12px;
@@ -270,7 +279,7 @@ h2 {
   font-size: 12px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--pen-primary);
+  color: var(--pen-red);
 }
 
 .card-grid {
@@ -278,6 +287,12 @@ h2 {
   flex-wrap: wrap;
   gap: 16px;
   margin-top: 20px;
+}
+
+.card-grid svg,
+.sheet-grid svg {
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px var(--pen-rule);
 }
 
 .card-grid svg {
@@ -301,7 +316,7 @@ h2 {
 }
 
 .read-face dt {
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Linux Biolinum", serif;
   font-weight: 700;
   letter-spacing: 0.14em;
   font-size: 11px;
@@ -313,7 +328,7 @@ h2 {
 }
 
 .contact-root {
-  background: var(--pen-paper);
+  background: var(--pen-page);
 }
 
 .sheet {
@@ -332,12 +347,12 @@ h2 {
   gap: 16px;
   padding-bottom: 5px;
   border-bottom: 1px solid var(--pen-ink);
-  font-family: "Roboto Condensed", sans-serif;
+  font-family: "Linux Biolinum", serif;
   text-transform: uppercase;
 }
 
 .sheet-head span:first-child {
-  font-weight: 900;
+  font-weight: 700;
   font-size: 12pt;
   letter-spacing: 0.16em;
 }
@@ -346,7 +361,7 @@ h2 {
   font-weight: 700;
   font-size: 8pt;
   letter-spacing: 0.18em;
-  color: var(--pen-primary);
+  color: var(--pen-red);
 }
 
 .sheet-grid {

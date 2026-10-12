@@ -1,10 +1,11 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { CardFace } from "../components/CardFace.tsx";
-import { FlowerKey, StoneKey } from "../components/Keys.tsx";
+import { GemKey, LexiconKey, PlantKey } from "../components/Keys.tsx";
 import { FOCUS_NOTES, type ReadAsFocus } from "../deck/constants.ts";
 import { DecoBand, ReadAsControl } from "../components/ReadAsControl.tsx";
 import { buildDeck } from "../deck/encoding.ts";
+import { ARTWORK_NOTICE } from "../tokens.ts";
 
 export function DeckViewer() {
   const [focus, setFocus] = useState<ReadAsFocus>("all");
@@ -18,8 +19,9 @@ export function DeckViewer() {
           <p className="kicker">104 cards · four systems on one face</p>
         </div>
         <p className="lede">
-          One 104-card pack: a double playing-card run, a full 78-card tarot,
-          eight flowers valued ace through king, and eight gems.
+          One 104-card pack: a double playing-card run, two Lexicon decks,
+          eight plants valued ace through king, and Bohnanza's eight beans as
+          gems.
         </p>
       </div>
       <hr className="rule" />
@@ -29,8 +31,9 @@ export function DeckViewer() {
       <p className="focus-note">{FOCUS_NOTES[focus]}</p>
 
       <div className="keys-grid">
-        <FlowerKey />
-        <StoneKey />
+        <PlantKey />
+        <GemKey />
+        <LexiconKey />
       </div>
 
       <section className="deck-section">
@@ -50,35 +53,40 @@ export function DeckViewer() {
           <div className="section-title">Mapping strategy</div>
           <p className="body-copy">
             Every identity is derived from the playing-card rank and suit.
-            Cards 1–52 are the minor arcana less the knights. Jacks 63, 76, 89
-            and 102 are the four knights. Majors occupy 53–62, 64–65 and 66–75.
+            Suits run clubs, diamonds, hearts, spades; cards 1–52 are the
+            first copy and 53–104 the second.
           </p>
           <p className="body-copy">
-            Flowers are eight silhouettes, two per suit. Species names are
-            never printed.
+            Plants are eight species, two per suit, one for each copy. Gems
+            follow Bohnanza's bean counts, in contiguous runs from clubs to
+            spades, ace to king, so both copies of a rank and suit share one.
           </p>
           <p className="body-copy">
-            Both copies of a rank and suit share a gem, in contiguous runs
-            from spades to clubs, ace to king.
+            Each copy carries a standard 52-card Lexicon deck, master card
+            included, dealt by a fixed shuffle.
           </p>
         </div>
         <div>
           <div className="section-title">Reading the face</div>
           <dl className="read-face">
-            <dt>Corners</dt>
-            <dd>Rank and suit, diagonally mirrored. Red suits in primary.</dd>
-            <dt>Number</dt>
-            <dd>1–104, top right. The flower marks which copy of the suit.</dd>
-            <dt>Left rail</dt>
-            <dd>Tarot name and index. Empty on the 26 silent cards.</dd>
+            <dt>Top left</dt>
+            <dd>Rank and suit plant. Red suits in red.</dd>
+            <dt>Top right</dt>
+            <dd>Card number, 1–104.</dd>
             <dt>Centre</dt>
-            <dd>Flower silhouette.</dd>
-            <dt>Foot</dt>
-            <dd>Gem mark and name, inverted for the other way up.</dd>
+            <dd>Plant and its name in small caps.</dd>
+            <dt>Bottom left</dt>
+            <dd>Gem, name and beanometer, four coins down to one.</dd>
+            <dt>Bottom right</dt>
+            <dd>
+              Lexicon letter and value, upside down. Turn the card round to
+              play Lexicon.
+            </dd>
           </dl>
           <p className="body-copy">
             <Link to="/print">Contact sheet</Link>
           </p>
+          <p className="body-copy">{ARTWORK_NOTICE}</p>
         </div>
       </div>
     </main>

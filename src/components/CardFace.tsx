@@ -1,59 +1,52 @@
-import { flowerSymbols } from "../assets/flowers.tsx";
-import { StoneMark } from "./StoneMark.tsx";
+import { symbolAspect, symbolDefs } from "../assets/symbols.tsx";
+import { SymbolMark } from "./SymbolMark.tsx";
 import type { ReadAsFocus } from "../deck/constants.ts";
 import type { Card } from "../deck/encoding.ts";
-import { CARD_HEIGHT, CARD_WIDTH, COLORS } from "../tokens.ts";
+import { CARD_HEIGHT, CARD_WIDTH, COLORS, FONT_FAMILY } from "../tokens.ts";
 
-const DISPLAY = "'Roboto Condensed', sans-serif";
 const EASE = "opacity 120ms cubic-bezier(0.2,0,0,1)";
-const INDEX_X = 42;
-const INDEX_Y = 16;
-const RANK_SIZE = 44;
-const RANK_BASELINE = 36;
-const SUIT_SIZE = 44;
-const SUIT_BASELINE = 70;
-const FOOT_RULE_Y = CARD_HEIGHT - INDEX_Y - SUIT_BASELINE + SUIT_SIZE * 0.4 - 6;
+const EDGE = 18;
+const RIGHT = CARD_WIDTH - EDGE;
+const INDEX_SIZE = 84;
+const INDEX_BASELINE = 75;
+const CORNER_PLANT_H = 58;
+const CORNER_PLANT_MAX_W = 66;
+const CORNER_GAP = 8;
+const NAME_SIZE = 22;
+const NAME_BASELINE = 351;
+const LEX_LETTER_SIZE = 94;
+const LEX_LETTER_BASELINE = 81;
+const LEX_VALUE_SIZE = 62;
+const LEX_VALUE_BASELINE = 141;
+const GEM_LABEL_SIZE = 21;
+const BEAN_SIZE = 18;
+const BEAN_BASE_Y = 386;
+const BEAN_STEP = 17.5;
+const SMALL_CAP_RATIO = 0.76;
+
+/** Advance widths (em) of each rank in Linux Biolinum Bold. */
+const RANK_ADVANCE: Record<string, number> = {
+  A: 0.701,
+  "10": 1.027,
+  J: 0.373,
+  Q: 0.799,
+  K: 0.759,
+};
+const DIGIT_ADVANCE = 0.514;
 
 function layerOpacity(focus: ReadAsFocus, layer: Exclude<ReadAsFocus, "all">) {
   return focus === "all" || focus === layer ? 1 : 0.12;
 }
 
-function textWidth(
-  text: string,
-  fontSize: number,
-  trackingEm: number,
-  factor = 0.52,
-) {
-  return (
-    text.length * fontSize * factor +
-    Math.max(0, text.length - 1) * trackingEm * fontSize
-  );
-}
-
-function IndexCorner({ card }: { card: Card }) {
-  const fill = COLORS[card.suitColor];
-  return (
-    <g transform={`translate(${INDEX_X} ${INDEX_Y})`} fill={fill}>
-      <text
-        y={RANK_BASELINE}
-        textAnchor="middle"
-        fontFamily={DISPLAY}
-        fontWeight={900}
-        fontSize={RANK_SIZE}
-        fontVariant="tabular-nums"
-      >
-        {card.rank}
-      </text>
-      <text
-        y={SUIT_BASELINE}
-        textAnchor="middle"
-        fontFamily={DISPLAY}
-        fontSize={SUIT_SIZE}
-      >
-        {card.suitGlyph}
-      </text>
-    </g>
-  );
+/** Small caps drawn by hand so the browser and resvg agree. */
+function SmallCaps({ text, size }: { text: string; size: number }) {
+  return text.split(" ").map((word, i) => (
+    <tspan key={i}>
+      {i > 0 ? " " : ""}
+      <tspan fontSize={size}>{word[0]!.toUpperCase()}</tspan>
+      <tspan fontSize={size * SMALL_CAP_RATIO}>{word.slice(1).toUpperCase()}</tspan>
+    </tspan>
+  ));
 }
 
 type CardFaceProps = {
@@ -73,17 +66,17 @@ export function CardFace({
 }: CardFaceProps) {
   const prefix = embedDefs ? `c${card.number}-` : "";
   const dP = layerOpacity(focus, "playing");
-  const dT = layerOpacity(focus, "tarot");
+  const dL = layerOpacity(focus, "lexicon");
   const dA = layerOpacity(focus, "arboretum");
   const dB = layerOpacity(focus, "bohnanza");
-  const flowerFill = COLORS[card.flowerFill];
-  const flowerSize = 104;
-  const flowerX = (CARD_WIDTH - flowerSize) / 2;
-  const nameW = textWidth(card.stone, 17, 0.16, 0.58);
-  const gemSize = 28;
-  const gemGap = 12;
-  const footTotal = gemSize + gemGap + nameW;
-  const footStart = -footTotal / 2;
+  const indexFill = card.suitRed ? COLORS.red : COLORS.ink;
+  const coinsHighToLow = [...card.beanometer].reverse();
+  const rankWidth = (RANK_ADVANCE[card.rank] ?? DIGIT_ADVANCE) * INDEX_SIZE;
+  const cornerW = Math.min(
+    CORNER_PLANT_MAX_W,
+    CORNER_PLANT_H * symbolAspect(card.plantId),
+  );
+  const cornerH = cornerW / symbolAspect(card.plantId);
 
   return (
     <svg
@@ -93,102 +86,109 @@ export function CardFace({
       width={width}
       height={height}
       role="img"
-      aria-label={`${card.rank}${card.suitGlyph} card ${card.number}`}
+      aria-label={`${card.rank}${card.suitGlyph} ${card.plant}, card ${card.number}`}
+      fontFamily={FONT_FAMILY}
     >
-      {embedDefs ? <defs>{flowerSymbols(prefix)}</defs> : null}
-      <rect
-        x="0.5"
-        y="0.5"
-        width={CARD_WIDTH - 1}
-        height={CARD_HEIGHT - 1}
-        fill={COLORS.paper}
-        stroke={COLORS.ink}
-        strokeWidth={1}
-      />
+      {embedDefs ? <defs>{symbolDefs(prefix)}</defs> : null}
+      <rect width={CARD_WIDTH} height={CARD_HEIGHT} fill={COLORS.paper} />
 
       <g style={{ opacity: dP, transition: EASE }}>
-        <IndexCorner card={card} />
-        <g transform={`rotate(180 ${CARD_WIDTH / 2} ${CARD_HEIGHT / 2})`}>
-          <IndexCorner card={card} />
-        </g>
         <text
-          x={322}
-          y={40}
+          x={EDGE}
+          y={INDEX_BASELINE}
+          fontWeight={700}
+          fontSize={INDEX_SIZE}
+          fill={indexFill}
+        >
+          {card.rank}
+        </text>
+        <SymbolMark
+          id={card.plantId}
+          prefix={prefix}
+          x={EDGE + rankWidth + CORNER_GAP}
+          y={18 + (CORNER_PLANT_H - cornerH) / 2}
+          width={cornerW}
+          height={cornerH}
+        />
+        <text
+          x={RIGHT}
+          y={INDEX_BASELINE}
           textAnchor="end"
-          fontFamily={DISPLAY}
-          fontWeight={900}
-          fontSize={30}
+          fontWeight={700}
+          fontSize={INDEX_SIZE}
           fill={COLORS.ink}
-          fontVariant="tabular-nums"
         >
           {card.number}
         </text>
       </g>
 
-      <g style={{ opacity: dT, transition: EASE }}>
-        {card.tarotName ? (
-          <text
-            transform="translate(27 238) rotate(-90)"
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fontFamily={DISPLAY}
-          >
-            <tspan
-              fill={COLORS.primary}
-              fontWeight={900}
-              fontSize={14}
-              letterSpacing="0.2em"
-            >
-              {card.tarotName}
-            </tspan>
-            <tspan
-              dx={12}
-              fill={COLORS.ink}
-              fontWeight={400}
-              fontSize={11}
-              letterSpacing="0.24em"
-            >
-              {card.tarotIndex}
-            </tspan>
-          </text>
-        ) : null}
-      </g>
-
       <g style={{ opacity: dA, transition: EASE }}>
-        <use
-          href={`#${prefix}${card.flowerId}`}
-          xlinkHref={`#${prefix}${card.flowerId}`}
-          x={flowerX}
-          y={177}
-          width={flowerSize}
-          height={flowerSize}
-          fill={flowerFill}
+        <SymbolMark
+          id={card.plantId}
+          prefix={prefix}
+          x={62}
+          y={123}
+          width={216}
+          height={192}
         />
+        <text
+          x={CARD_WIDTH / 2}
+          y={NAME_BASELINE}
+          textAnchor="middle"
+          letterSpacing="0.04em"
+          fill={COLORS.ink}
+        >
+          <SmallCaps text={card.plant} size={NAME_SIZE} />
+        </text>
       </g>
 
       <g style={{ opacity: dB, transition: EASE }}>
-        <rect x={62} y={FOOT_RULE_Y} width={216} height={1} fill={COLORS.gold} />
-        <g transform="rotate(180 170 445)">
-          <g transform="translate(170 445)">
-            <StoneMark
-              name={card.stone}
-              fill={COLORS.primary}
-              size={gemSize}
-              x={footStart}
-              y={-gemSize / 2}
-            />
+        {coinsHighToLow.map((beans, i) =>
+          beans === null ? null : (
             <text
-              x={footStart + gemSize + gemGap}
-              y={6}
-              fontFamily={DISPLAY}
-              fontWeight={700}
-              fontSize={17}
-              letterSpacing="0.16em"
-              fill={COLORS.primary}
+              key={i}
+              transform={`translate(${30 + i * BEAN_STEP} ${BEAN_BASE_Y}) rotate(-90)`}
+              fontSize={BEAN_SIZE}
+              fill={COLORS.ink}
             >
-              {card.stone}
+              {beans}
             </text>
-          </g>
+          ),
+        )}
+        <g transform={`rotate(180 ${EDGE + 36} ${394 + 32})`}>
+          <SymbolMark
+            id={card.gemId}
+            prefix={prefix}
+            x={EDGE}
+            y={394}
+            width={72}
+            height={64}
+          />
+        </g>
+        <text
+          transform={`translate(110 ${CARD_HEIGHT - 26}) rotate(-90)`}
+          fontSize={GEM_LABEL_SIZE}
+          letterSpacing="0.03em"
+          fill={COLORS.ink}
+        >
+          {card.gem}
+        </text>
+      </g>
+
+      <g style={{ opacity: dL, transition: EASE }} fill={COLORS.ink}>
+        {/* Upside down: turn the card round and it reads as a Lexicon index. */}
+        <g transform={`rotate(180 ${CARD_WIDTH / 2} ${CARD_HEIGHT / 2})`}>
+          <text
+            x={EDGE}
+            y={LEX_LETTER_BASELINE}
+            fontWeight={700}
+            fontSize={LEX_LETTER_SIZE}
+          >
+            {card.lexiconLetter}
+          </text>
+          <text x={EDGE} y={LEX_VALUE_BASELINE} fontSize={LEX_VALUE_SIZE}>
+            {card.lexiconValue}
+          </text>
         </g>
       </g>
     </svg>

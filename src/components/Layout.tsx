@@ -1,10 +1,10 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { FlowerSprite } from "./FlowerSprite.tsx";
+import { SymbolSprite } from "./SymbolSprite.tsx";
 
 export function Layout() {
   return (
     <>
-      <FlowerSprite />
+      <SymbolSprite />
       <header className="site-nav no-print">
         <NavLink to="/" end>
           Multipack

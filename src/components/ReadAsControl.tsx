@@ -4,8 +4,8 @@ import type { ReadAsFocus } from "../deck/constants.ts";
 const OPTIONS: { id: ReadAsFocus; label: string }[] = [
   { id: "all", label: "ALL FOUR" },
   { id: "playing", label: "PLAYING" },
-  { id: "tarot", label: "TAROT" },
-  { id: "arboretum", label: "FLOWERS" },
+  { id: "lexicon", label: "LEXICON" },
+  { id: "arboretum", label: "PLANTS" },
   { id: "bohnanza", label: "GEMS" },
 ];
 
@@ -46,7 +46,7 @@ export function DecoBand() {
           <path
             key={i}
             d={`M${x + 20} 1 L${x + 32} 9 L${x + 20} 17 L${x + 8} 9 Z`}
-            fill={COLORS.primaryTint}
+            fill={COLORS.redLight}
           />
         );
       })}
