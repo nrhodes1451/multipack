@@ -11,17 +11,24 @@ const INDEX_SIZE = 84;
 const INDEX_BASELINE = 75;
 const CORNER_PLANT_H = 58;
 const CORNER_PLANT_MAX_W = 66;
-const CORNER_GAP = 8;
+const CORNER_GAP = 3;
 const NAME_SIZE = 22;
 const NAME_BASELINE = 351;
 const LEX_LETTER_SIZE = 94;
 const LEX_LETTER_BASELINE = 81;
 const LEX_VALUE_SIZE = 62;
 const LEX_VALUE_BASELINE = 141;
-const GEM_LABEL_SIZE = 21;
+const GEM_LABEL_SIZE = 17;
 const BEAN_SIZE = 18;
+const GEM_CENTRE_Y = 426;
+const GEM_MAX_W = 72;
+const GEM_MAX_H = 64;
+const GEM_GAP = 10;
+/** Cap height of Biolinum, in em: rotated text sits this far left of its baseline. */
+const CAP_HEIGHT = 0.65;
 const BEAN_BASE_Y = 386;
 const BEAN_STEP = 17.5;
+const BEAN_X0 = 32;
 const SMALL_CAP_RATIO = 0.76;
 
 /** Advance widths (em) of each rank in Linux Biolinum Bold. */
@@ -77,6 +84,13 @@ export function CardFace({
     CORNER_PLANT_H * symbolAspect(card.plantId),
   );
   const cornerH = cornerW / symbolAspect(card.plantId);
+  const gemW = Math.min(GEM_MAX_W, GEM_MAX_H * symbolAspect(card.gemId));
+  const gemH = gemW / symbolAspect(card.gemId);
+  // Rotated digits sit left of their baseline; centre the gem on the column.
+  const gemCentreX =
+    BEAN_X0 + 1.5 * BEAN_STEP - (CAP_HEIGHT * BEAN_SIZE) / 2;
+  const gemLabelX =
+    gemCentreX + gemW / 2 + GEM_GAP + CAP_HEIGHT * GEM_LABEL_SIZE;
 
   return (
     <svg
@@ -147,7 +161,7 @@ export function CardFace({
           beans === null ? null : (
             <text
               key={i}
-              transform={`translate(${30 + i * BEAN_STEP} ${BEAN_BASE_Y}) rotate(-90)`}
+              transform={`translate(${BEAN_X0 + i * BEAN_STEP} ${BEAN_BASE_Y}) rotate(-90)`}
               fontSize={BEAN_SIZE}
               fill={COLORS.ink}
             >
@@ -155,18 +169,19 @@ export function CardFace({
             </text>
           ),
         )}
-        <g transform={`rotate(180 ${EDGE + 36} ${394 + 32})`}>
+        <g transform={`rotate(180 ${gemCentreX} ${GEM_CENTRE_Y})`}>
           <SymbolMark
             id={card.gemId}
             prefix={prefix}
-            x={EDGE}
-            y={394}
-            width={72}
-            height={64}
+            x={gemCentreX - gemW / 2}
+            y={GEM_CENTRE_Y - gemH / 2}
+            width={gemW}
+            height={gemH}
           />
         </g>
         <text
-          transform={`translate(110 ${CARD_HEIGHT - 26}) rotate(-90)`}
+          transform={`translate(${gemLabelX} ${GEM_CENTRE_Y}) rotate(-90)`}
+          textAnchor="middle"
           fontSize={GEM_LABEL_SIZE}
           letterSpacing="0.03em"
           fill={COLORS.ink}

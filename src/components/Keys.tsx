@@ -51,7 +51,7 @@ export function GemKey() {
         ))}
       </div>
       <p className="body-copy">
-        The eight gems stand in for Bohnanza's beans: citrine is the blue bean
+        The eight gems stand in for Bohnanza's beans: amber is the blue bean
         at twenty, ruby the garden bean at six. Both copies of a rank and suit
         carry the same gem. The beanometer reads the beans needed for one to
         four coins.

@@ -1,14 +1,14 @@
 id,deck,rank,suit,suit_glyph,code,plant,plant_id,gem,gem_id,gem_count,bean,beanometer,lexicon_letter,lexicon_value
-1,A,A,C,♣,AAC,Iris,iris,Citrine,1,20,Blue,4/6/8/10,W,8
-2,A,2,C,♣,A2C,Iris,iris,Citrine,1,20,Blue,4/6/8/10,Q,4
-3,A,3,C,♣,A3C,Iris,iris,Citrine,1,20,Blue,4/6/8/10,T,8
-4,A,4,C,♣,A4C,Iris,iris,Citrine,1,20,Blue,4/6/8/10,E,10
-5,A,5,C,♣,A5C,Iris,iris,Citrine,1,20,Blue,4/6/8/10,W,8
-6,A,6,C,♣,A6C,Iris,iris,Citrine,1,20,Blue,4/6/8/10,D,6
-7,A,7,C,♣,A7C,Iris,iris,Citrine,1,20,Blue,4/6/8/10,O,8
-8,A,8,C,♣,A8C,Iris,iris,Citrine,1,20,Blue,4/6/8/10,R,8
-9,A,9,C,♣,A9C,Iris,iris,Citrine,1,20,Blue,4/6/8/10,★,15
-10,A,10,C,♣,A10C,Iris,iris,Citrine,1,20,Blue,4/6/8/10,K,8
+1,A,A,C,♣,AAC,Iris,iris,Amber,1,20,Blue,4/6/8/10,W,8
+2,A,2,C,♣,A2C,Iris,iris,Amber,1,20,Blue,4/6/8/10,Q,4
+3,A,3,C,♣,A3C,Iris,iris,Amber,1,20,Blue,4/6/8/10,T,8
+4,A,4,C,♣,A4C,Iris,iris,Amber,1,20,Blue,4/6/8/10,E,10
+5,A,5,C,♣,A5C,Iris,iris,Amber,1,20,Blue,4/6/8/10,W,8
+6,A,6,C,♣,A6C,Iris,iris,Amber,1,20,Blue,4/6/8/10,D,6
+7,A,7,C,♣,A7C,Iris,iris,Amber,1,20,Blue,4/6/8/10,O,8
+8,A,8,C,♣,A8C,Iris,iris,Amber,1,20,Blue,4/6/8/10,R,8
+9,A,9,C,♣,A9C,Iris,iris,Amber,1,20,Blue,4/6/8/10,★,15
+10,A,10,C,♣,A10C,Iris,iris,Amber,1,20,Blue,4/6/8/10,K,8
 11,A,J,C,♣,AJC,Iris,iris,Topaz,2,18,Chili,3/6/8/9,E,10
 12,A,Q,C,♣,AQC,Iris,iris,Topaz,2,18,Chili,3/6/8/9,T,8
 13,A,K,C,♣,AKC,Iris,iris,Topaz,2,18,Chili,3/6/8/9,O,8
@@ -33,12 +33,12 @@ id,deck,rank,suit,suit_glyph,code,plant,plant_id,gem,gem_id,gem_count,bean,beano
 32,A,6,H,♥,A6H,Hosta,hosta,Quartz,4,14,Green,3/5/6/7,E,10
 33,A,7,H,♥,A7H,Hosta,hosta,Quartz,4,14,Green,3/5/6/7,A,10
 34,A,8,H,♥,A8H,Hosta,hosta,Quartz,4,14,Green,3/5/6/7,A,10
-35,A,9,H,♥,A9H,Hosta,hosta,Amber,5,12,Soy,2/4/6/7,I,10
-36,A,10,H,♥,A10H,Hosta,hosta,Amber,5,12,Soy,2/4/6/7,F,2
-37,A,J,H,♥,AJH,Hosta,hosta,Amber,5,12,Soy,2/4/6/7,G,4
-38,A,Q,H,♥,AQH,Hosta,hosta,Amber,5,12,Soy,2/4/6/7,R,8
-39,A,K,H,♥,AKH,Hosta,hosta,Amber,5,12,Soy,2/4/6/7,N,8
-40,A,A,S,♠,AAS,Monstera,monstera,Amber,5,12,Soy,2/4/6/7,C,8
+35,A,9,H,♥,A9H,Hosta,hosta,Citrine,5,12,Soy,2/4/6/7,I,10
+36,A,10,H,♥,A10H,Hosta,hosta,Citrine,5,12,Soy,2/4/6/7,F,2
+37,A,J,H,♥,AJH,Hosta,hosta,Citrine,5,12,Soy,2/4/6/7,G,4
+38,A,Q,H,♥,AQH,Hosta,hosta,Citrine,5,12,Soy,2/4/6/7,R,8
+39,A,K,H,♥,AKH,Hosta,hosta,Citrine,5,12,Soy,2/4/6/7,N,8
+40,A,A,S,♠,AAS,Monstera,monstera,Citrine,5,12,Soy,2/4/6/7,C,8
 41,A,2,S,♠,A2S,Monstera,monstera,Sapphire,6,10,Black-eyed,2/4/5/6,B,2
 42,A,3,S,♠,A3S,Monstera,monstera,Sapphire,6,10,Black-eyed,2/4/5/6,M,8
 43,A,4,S,♠,A4S,Monstera,monstera,Sapphire,6,10,Black-eyed,2/4/5/6,L,8
@@ -51,16 +51,16 @@ id,deck,rank,suit,suit_glyph,code,plant,plant_id,gem,gem_id,gem_count,bean,beano
 50,A,J,S,♠,AJS,Monstera,monstera,Ruby,8,6,Garden,-/2/3/-,I,10
 51,A,Q,S,♠,AQS,Monstera,monstera,Ruby,8,6,Garden,-/2/3/-,J,6
 52,A,K,S,♠,AKS,Monstera,monstera,Ruby,8,6,Garden,-/2/3/-,O,8
-53,B,A,C,♣,BAC,Clover,clover,Citrine,1,20,Blue,4/6/8/10,E,10
-54,B,2,C,♣,B2C,Clover,clover,Citrine,1,20,Blue,4/6/8/10,U,8
-55,B,3,C,♣,B3C,Clover,clover,Citrine,1,20,Blue,4/6/8/10,I,10
-56,B,4,C,♣,B4C,Clover,clover,Citrine,1,20,Blue,4/6/8/10,L,8
-57,B,5,C,♣,B5C,Clover,clover,Citrine,1,20,Blue,4/6/8/10,T,8
-58,B,6,C,♣,B6C,Clover,clover,Citrine,1,20,Blue,4/6/8/10,T,8
-59,B,7,C,♣,B7C,Clover,clover,Citrine,1,20,Blue,4/6/8/10,A,10
-60,B,8,C,♣,B8C,Clover,clover,Citrine,1,20,Blue,4/6/8/10,R,8
-61,B,9,C,♣,B9C,Clover,clover,Citrine,1,20,Blue,4/6/8/10,H,8
-62,B,10,C,♣,B10C,Clover,clover,Citrine,1,20,Blue,4/6/8/10,T,8
+53,B,A,C,♣,BAC,Clover,clover,Amber,1,20,Blue,4/6/8/10,E,10
+54,B,2,C,♣,B2C,Clover,clover,Amber,1,20,Blue,4/6/8/10,U,8
+55,B,3,C,♣,B3C,Clover,clover,Amber,1,20,Blue,4/6/8/10,I,10
+56,B,4,C,♣,B4C,Clover,clover,Amber,1,20,Blue,4/6/8/10,L,8
+57,B,5,C,♣,B5C,Clover,clover,Amber,1,20,Blue,4/6/8/10,T,8
+58,B,6,C,♣,B6C,Clover,clover,Amber,1,20,Blue,4/6/8/10,T,8
+59,B,7,C,♣,B7C,Clover,clover,Amber,1,20,Blue,4/6/8/10,A,10
+60,B,8,C,♣,B8C,Clover,clover,Amber,1,20,Blue,4/6/8/10,R,8
+61,B,9,C,♣,B9C,Clover,clover,Amber,1,20,Blue,4/6/8/10,H,8
+62,B,10,C,♣,B10C,Clover,clover,Amber,1,20,Blue,4/6/8/10,T,8
 63,B,J,C,♣,BJC,Clover,clover,Topaz,2,18,Chili,3/6/8/9,★,15
 64,B,Q,C,♣,BQC,Clover,clover,Topaz,2,18,Chili,3/6/8/9,O,8
 65,B,K,C,♣,BKC,Clover,clover,Topaz,2,18,Chili,3/6/8/9,A,10
@@ -85,12 +85,12 @@ id,deck,rank,suit,suit_glyph,code,plant,plant_id,gem,gem_id,gem_count,bean,beano
 84,B,6,H,♥,B6H,Eastern Redbud,eastern-redbud,Quartz,4,14,Green,3/5/6/7,U,8
 85,B,7,H,♥,B7H,Eastern Redbud,eastern-redbud,Quartz,4,14,Green,3/5/6/7,K,8
 86,B,8,H,♥,B8H,Eastern Redbud,eastern-redbud,Quartz,4,14,Green,3/5/6/7,A,10
-87,B,9,H,♥,B9H,Eastern Redbud,eastern-redbud,Amber,5,12,Soy,2/4/6/7,O,8
-88,B,10,H,♥,B10H,Eastern Redbud,eastern-redbud,Amber,5,12,Soy,2/4/6/7,H,8
-89,B,J,H,♥,BJH,Eastern Redbud,eastern-redbud,Amber,5,12,Soy,2/4/6/7,M,8
-90,B,Q,H,♥,BQH,Eastern Redbud,eastern-redbud,Amber,5,12,Soy,2/4/6/7,P,8
-91,B,K,H,♥,BKH,Eastern Redbud,eastern-redbud,Amber,5,12,Soy,2/4/6/7,W,8
-92,B,A,S,♠,BAS,Anthurium,anthurium,Amber,5,12,Soy,2/4/6/7,Y,4
+87,B,9,H,♥,B9H,Eastern Redbud,eastern-redbud,Citrine,5,12,Soy,2/4/6/7,O,8
+88,B,10,H,♥,B10H,Eastern Redbud,eastern-redbud,Citrine,5,12,Soy,2/4/6/7,H,8
+89,B,J,H,♥,BJH,Eastern Redbud,eastern-redbud,Citrine,5,12,Soy,2/4/6/7,M,8
+90,B,Q,H,♥,BQH,Eastern Redbud,eastern-redbud,Citrine,5,12,Soy,2/4/6/7,P,8
+91,B,K,H,♥,BKH,Eastern Redbud,eastern-redbud,Citrine,5,12,Soy,2/4/6/7,W,8
+92,B,A,S,♠,BAS,Anthurium,anthurium,Citrine,5,12,Soy,2/4/6/7,Y,4
 93,B,2,S,♠,B2S,Anthurium,anthurium,Sapphire,6,10,Black-eyed,2/4/5/6,C,8
 94,B,3,S,♠,B3S,Anthurium,anthurium,Sapphire,6,10,Black-eyed,2/4/5/6,L,8
 95,B,4,S,♠,B4S,Anthurium,anthurium,Sapphire,6,10,Black-eyed,2/4/5/6,H,8

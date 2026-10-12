@@ -12,7 +12,7 @@
 - **Top left**: rank and suit plant. Red suits print in red.
 - **Top right**: card number, 1–104 (clubs, diamonds, hearts, spades, ace to king; 53–104 is the second copy).
 - **Centre**: plant and its name in small caps. Iris ♣, Tulip ♦, Hosta ♥ and Monstera ♠ on 1–52; Clover ♣, Fuchsia ♦, Eastern Redbud ♥ and Anthurium ♠ on 53–104.
-- **Bottom left**: gem, name and beanometer (beans for 4→1 coins). Gems map Bohnanza's beans: Citrine 20 (blue), Topaz 18 (chili), Peridot 16 (stink), Quartz 14 (green), Amber 12 (soy), Sapphire 10 (black-eyed), Emerald 8 (red), Ruby 6 (garden).
+- **Bottom left**: gem, name and beanometer (beans for 4→1 coins). Gems map Bohnanza's beans: Amber 20 (blue), Topaz 18 (chili), Peridot 16 (stink), Quartz 14 (green), Citrine 12 (soy), Sapphire 10 (black-eyed), Emerald 8 (red), Ruby 6 (garden).
 - **Bottom right**: Lexicon letter and value, printed upside down. Turn the card round to play Lexicon and they read as a normal corner index. Each copy holds a standard 52-card Lexicon deck (★ is the wild master card).
 
 **Back**: `designs/Card back.svg`, embedded as drawn.

@@ -25,7 +25,7 @@ describe("encoding", () => {
     expect(card.number).toBe(4);
     expect(card.plant).toBe("Iris");
     expect(card.suitRed).toBe(false);
-    expect(card.gem).toBe("Citrine");
+    expect(card.gem).toBe("Amber");
     expect(card.beanometer).toEqual([4, 6, 8, 10]);
   });
 

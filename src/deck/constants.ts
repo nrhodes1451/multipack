@@ -37,11 +37,11 @@ export const PLANTS = [
  * 1, 2, 3 and 4 coins; null where the bean has no step.
  */
 export const GEMS = [
-  { name: "Citrine", id: "citrine", bean: "Blue", count: 20, beanometer: [4, 6, 8, 10] },
+  { name: "Amber", id: "amber", bean: "Blue", count: 20, beanometer: [4, 6, 8, 10] },
   { name: "Topaz", id: "topaz", bean: "Chili", count: 18, beanometer: [3, 6, 8, 9] },
   { name: "Peridot", id: "peridot", bean: "Stink", count: 16, beanometer: [3, 5, 7, 8] },
   { name: "Quartz", id: "quartz", bean: "Green", count: 14, beanometer: [3, 5, 6, 7] },
-  { name: "Amber", id: "amber", bean: "Soy", count: 12, beanometer: [2, 4, 6, 7] },
+  { name: "Citrine", id: "citrine", bean: "Soy", count: 12, beanometer: [2, 4, 6, 7] },
   { name: "Sapphire", id: "sapphire", bean: "Black-eyed", count: 10, beanometer: [2, 4, 5, 6] },
   { name: "Emerald", id: "emerald", bean: "Red", count: 8, beanometer: [2, 3, 4, 5] },
   { name: "Ruby", id: "ruby", bean: "Garden", count: 6, beanometer: [null, 2, 3, null] },
